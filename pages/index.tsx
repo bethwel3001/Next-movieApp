@@ -75,10 +75,16 @@ export default function Home() {
       </header>
 
       <main className="movies-container">
-        <div className="movies-grid animate-fade-in">
+        <div className="movies-grid">
           {filteredMovies.length > 0 ? (
             filteredMovies.map((movie) => (
-              <MovieCard key={movie.id} {...movie} />
+              <MovieCard
+                key={movie.id}
+                title={movie.title}
+                posterPath={movie.poster_path}
+                rating={movie.vote_average}
+                overview={movie.overview}
+              />
             ))
           ) : (
             <div className="col-span-full text-center py-12 text-gray-400">
