@@ -27,7 +27,6 @@ const Navbar: React.FC = () => {
     <button className="bg-yellow-500 px-4 py-1 rounded-md hover:bg-yellow-600">Search</button>
   </div>
 </nav>
-
   );
 };
 
