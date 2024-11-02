@@ -1,38 +1,33 @@
-import React from 'react';
-import { FaHome, FaSearch, FaUser } from 'react-icons/fa';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <div className="nav-content">
-          <div className="logo">
-            MovieDB
-          </div>
-          
-          <div className="nav-links">
-            <a href="#" className="nav-item">Home</a>
-            <a href="#" className="nav-item">Movies</a>
-            <a href="#" className="nav-item">TV Shows</a>
-          </div>
+   // In navbar.tsx or relevant component
+<nav className="bg-gray-800 text-white p-4 flex justify-between items-center shadow-md">
+  <div className="text-2xl font-bold">Movie Platform</div>
+  <div className="hidden md:flex space-x-4">
+    <a href="/" className="hover:text-yellow-400">Home</a>
+    <a href="/movies" className="hover:text-yellow-400">Movies</a>
+    <a href="/contact" className="hover:text-yellow-400">Contact</a>
+  </div>
+  <div className="flex space-x-2">
+    <input
+      type="text"
+      placeholder="Search movies..."
+      className="px-2 py-1 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    />
+    <button className="bg-yellow-500 px-4 py-1 rounded-md hover:bg-yellow-600">Search</button>
+  </div>
+</nav>
 
-          <div className="nav-icons">
-            <button className="nav-icon">
-              <FaSearch className="text-xl" />
-            </button>
-            <button className="nav-icon">
-              <FaUser className="text-xl" />
-            </button>
-          </div>
-
-          <div className="mobile-menu md:hidden">
-            <button className="nav-icon">
-              ☰
-            </button>
-          </div>
-        </div>
-      </div>
-    </nav>
   );
 };
 

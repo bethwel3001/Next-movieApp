@@ -1,43 +1,30 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import React from 'react';
+import { BASE_IMAGE_URL } from '@/utils/constants';
 
+// Define the type for the props
 interface MovieCardProps {
-  movie: {
-    id: string;
-    title: string;
-    poster: string;
-    rating: number;
-  };
+  title: string;
+  poster: string;
+  releaseDate: string;
 }
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+// Component definition
+const MovieCard: React.FC<MovieCardProps> = ({ title, poster, releaseDate }) => {
   return (
-    <Link href={`/movies/${movie.id}`}>
-      <div className="movie-card">
-        <div className="movie-poster">
-          <Image
-            src={movie.poster}
-            alt={movie.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-        </div>
-        <div className="movie-info">
-          <h3 className="text-white font-semibold text-base truncate">
-            {movie.title}
-          </h3>
-          <div className="flex items-center mt-1">
-            <span className="text-yellow-400">★</span>
-            <span className="text-white ml-1">
-              {movie.rating.toFixed(1)}
-            </span>
-          </div>
-        </div>
-      </div>
-    </Link>
+    // In MovieCard.tsx
+<div className="movie-card max-w-xs mx-auto rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105">
+  <img src={`${BASE_IMAGE_URL}${poster}`} alt={title} className="w-full h-64 object-cover" />
+  <div className="p-4">
+    <h3 className="text-lg font-semibold">{title}</h3>
+    <p className="text-gray-500">Released: {releaseDate}</p>
+    <div className="mt-2 flex justify-between">
+      <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Watch</button>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Learn More</button>
+    </div>
+  </div>
+</div>
+
   );
 };
 
-export default MovieCard; 
+export default MovieCard;

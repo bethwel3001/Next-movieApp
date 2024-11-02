@@ -1,5 +1,4 @@
-// src/utils/api.ts
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY; // Use an environment variable for security
+const API_KEY = process.env.NEXT_PUBLIC_MOVIE_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const fetchMovies = async (query: string) => {
@@ -9,5 +8,6 @@ export const fetchMovies = async (query: string) => {
     return data.results;
   } catch (error) {
     console.error('Error fetching movies:', error);
+    return [];
   }
 };
